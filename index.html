@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe Game</title>
+  </head>
+  <body>
+    <div id="gameinfo">
+      <h2>Tic Tac Toe Game</h2>
+      <h2>X vs O</h2>
+    </div>
+    <div id="Box">
+      <table border="1px" cellpadding="1px" cellspacing="5px">
+        <tr>
+          <td id="box1" onclick="box1check()" width="100px" height="87px"></td>
+          <td id="box2" onclick="box2check()" width="100px" height="87px"></td>
+          <td id="box3" onclick="box3check()" width="100px" height="87px"></td>
+        </tr>
+
+        <tr>
+          <td id="box4" onclick="box4check()" width="100px" height="87px"></td>
+          <td id="box5" onclick="box5check()" width="100px" height="87px"></td>
+          <td id="box6" onclick="box6check()" width="100px" height="87px"></td>
+        </tr>
+
+        <tr>
+          <td id="box7" onclick="box7check()" width="100px" height="87px"></td>
+          <td id="box8" onclick="box8check()" width="100px" height="87px"></td>
+          <td id="box9" onclick="box9check()" width="100px" height="87px"></td>
+        </tr>
+      </table>
+    </div>
+
+    <button onclick="reset()">New Game</button>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Redressed&display=swap");
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #bd9fb5;
+      }
+
+      #gameinfo {
+        font-family: "Redressed", cursive;
+        margin: 5px;
+        text-align: center;
+        letter-spacing: 3px;
+        font-size: 30px;
+        color: #4b6662;
+        border-radius: 60px;
+        border: 8px double #bd9fb5;
+        background-image: radial-gradient(
+          circle,
+          #f9edf6,
+          #f2e6ef,
+          #ecdee8,
+          #e5d7e2,
+          #dfd0db,
+          #dacad6,
+          #d5c3d0,
+          #d0bdcb,
+          #cbb5c5,
+          #c6aec0,
+          #c2a6ba,
+          #bd9fb5
+        );
+      }
+
+      #Box {
+        width: 300px;
+        height: 295px;
+        margin: auto;
+        text-align: center;
+        color: #4b6662;
+      }
+
+      table {
+        font-size: 60px;
+      }
+
+      button {
+        font-family: "Redressed", cursive;
+        width: 200px;
+        padding: 5px;
+        margin: 20px;
+        margin-left: 175px;
+        letter-spacing: 3px;
+        font-weight: bold;
+        font-size: 30px;
+        color: #4b6662;
+        border-radius: 70px;
+        border: 7px double #bd9fb5;
+        background-image: radial-gradient(
+          circle,
+          #f9edf6,
+          #f2e6ef,
+          #ecdee8,
+          #e5d7e2,
+          #dfd0db,
+          #dacad6,
+          #d5c3d0,
+          #d0bdcb,
+          #cbb5c5,
+          #c6aec0,
+          #c2a6ba,
+          #bd9fb5
+        );
+      }
+    </style>
+
+    <script>
+      var player = 1;
+      var clickone = 0;
+      var clicktwo = 0;
+      var clickthree = 0;
+      var clickfour = 0;
+      var clickfive = 0;
+      var clicksix = 0;
+      var clickseven = 0;
+      var clickeight = 0;
+      var clicknine = 0;
+
+      function checkwhowon() {
+        win();
+        draw();
+      }
+
+      function draw() {
+        if (
+          clickone == 1 &&
+          clicktwo == 1 &&
+          clickthree == 1 &&
+          clickfour == 1 &&
+          clickfive == 1 &&
+          clicksix == 1 &&
+          clickseven == 1 &&
+          clickeight == 1 &&
+          clicknine == 1 &&
+          win != true
+        ) {
+          alert("It's a draw");
+          reset();
+        }
+      }
+
+      function win() {
+        if (
+          document.getElementById("box1").innerHTML == "X" &&
+          document.getElementById("box2").innerHTML == "X" &&
+          document.getElementById("box3").innerHTML == "X"
+        ) {
+          alert("Player X won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box4").innerHTML == "X" &&
+          document.getElementById("box5").innerHTML == "X" &&
+          document.getElementById("box6").innerHTML == "X"
+        ) {
+          alert("Player X won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box7").innerHTML == "X" &&
+          document.getElementById("box8").innerHTML == "X" &&
+          document.getElementById("box9").innerHTML == "X"
+        ) {
+          alert("Player X won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box1").innerHTML == "X" &&
+          document.getElementById("box4").innerHTML == "X" &&
+          document.getElementById("box7").innerHTML == "X"
+        ) {
+          alert("Player X won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box2").innerHTML == "X" &&
+          document.getElementById("box5").innerHTML == "X" &&
+          document.getElementById("box8").innerHTML == "X"
+        ) {
+          alert("Player X won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box3").innerHTML == "X" &&
+          document.getElementById("box6").innerHTML == "X" &&
+          document.getElementById("box9").innerHTML == "X"
+        ) {
+          alert("Player X won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box1").innerHTML == "X" &&
+          document.getElementById("box5").innerHTML == "X" &&
+          document.getElementById("box9").innerHTML == "X"
+        ) {
+          alert("Player X won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box3").innerHTML == "X" &&
+          document.getElementById("box5").innerHTML == "X" &&
+          document.getElementById("box7").innerHTML == "X"
+        ) {
+          alert("Player X won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box1").innerHTML == "O" &&
+          document.getElementById("box2").innerHTML == "O" &&
+          document.getElementById("box3").innerHTML == "O"
+        ) {
+          alert("Player O won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box4").innerHTML == "O" &&
+          document.getElementById("box5").innerHTML == "O" &&
+          document.getElementById("box6").innerHTML == "O"
+        ) {
+          alert("Player O won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box7").innerHTML == "O" &&
+          document.getElementById("box8").innerHTML == "O" &&
+          document.getElementById("box9").innerHTML == "O"
+        ) {
+          alert("Player O won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box1").innerHTML == "O" &&
+          document.getElementById("box4").innerHTML == "O" &&
+          document.getElementById("box7").innerHTML == "O"
+        ) {
+          alert("Player O won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box2").innerHTML == "O" &&
+          document.getElementById("box5").innerHTML == "O" &&
+          document.getElementById("box8").innerHTML == "O"
+        ) {
+          alert("Player O won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box3").innerHTML == "O" &&
+          document.getElementById("box6").innerHTML == "O" &&
+          document.getElementById("box9").innerHTML == "O"
+        ) {
+          alert("Player o won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box1").innerHTML == "O" &&
+          document.getElementById("box5").innerHTML == "O" &&
+          document.getElementById("box9").innerHTML == "O"
+        ) {
+          alert("Player O won!");
+          reset();
+          return true;
+        } else if (
+          document.getElementById("box3").innerHTML == "O" &&
+          document.getElementById("box5").innerHTML == "O" &&
+          document.getElementById("box7").innerHTML == "O"
+        ) {
+          alert("Player O won!");
+          reset();
+          return true;
+        }
+      }
+
+      function reset() {
+        document.getElementById("box1").innerHTML = "";
+        document.getElementById("box2").innerHTML = "";
+        document.getElementById("box3").innerHTML = "";
+        document.getElementById("box4").innerHTML = "";
+        document.getElementById("box5").innerHTML = "";
+        document.getElementById("box6").innerHTML = "";
+        document.getElementById("box7").innerHTML = "";
+        document.getElementById("box8").innerHTML = "";
+        document.getElementById("box9").innerHTML = "";
+        clickone = clicktwo = clickthree = clickfour = clickfive = clicksix = clickseven = clickeight = clicknine = 0;
+      }
+
+      function box1check() {
+        if (clickone == 0) {
+          clickone = 1;
+          switch (player) {
+            case 1:
+              document.getElementById("box1").innerHTML = "O";
+              player = player + 1;
+              checkwhowon();
+              break;
+            case 2:
+              document.getElementById("box1").innerHTML = "X";
+              player = player - 1;
+              checkwhowon();
+              break;
+          }
+        } else {
+          alert("Choose another box!");
+        }
+      }
+      function box2check() {
+        if (clicktwo == 0) {
+          clicktwo = 1;
+          switch (player) {
+            case 1:
+              document.getElementById("box2").innerHTML = "O";
+              player = player + 1;
+              checkwhowon();
+              break;
+            case 2:
+              document.getElementById("box2").innerHTML = "X";
+              player = player - 1;
+              checkwhowon();
+              break;
+          }
+        } else {
+          alert("Choose another box!");
+        }
+      }
+      function box3check() {
+        if (clickthree == 0) {
+          clickthree = 1;
+          switch (player) {
+            case 1:
+              document.getElementById("box3").innerHTML = "O";
+              player = player + 1;
+              checkwhowon();
+              break;
+            case 2:
+              document.getElementById("box3").innerHTML = "X";
+              player = player - 1;
+              checkwhowon();
+              break;
+          }
+        } else {
+          alert("Choose another box!");
+        }
+      }
+      function box4check() {
+        if (clickfour == 0) {
+          clickfour = 1;
+          switch (player) {
+            case 1:
+              document.getElementById("box4").innerHTML = "O";
+              player = player + 1;
+              checkwhowon();
+              break;
+            case 2:
+              document.getElementById("box4").innerHTML = "X";
+              player = player - 1;
+              checkwhowon();
+              break;
+          }
+        } else {
+          alert("Choose another box!");
+        }
+      }
+      function box5check() {
+        if (clickfive == 0) {
+          clickfive = 1;
+          switch (player) {
+            case 1:
+              document.getElementById("box5").innerHTML = "O";
+              player = player + 1;
+              checkwhowon();
+              break;
+            case 2:
+              document.getElementById("box5").innerHTML = "X";
+              player = player - 1;
+              checkwhowon();
+              break;
+          }
+        } else {
+          alert("Choose another box!");
+        }
+      }
+      function box6check() {
+        if (clicksix == 0) {
+          clicksix = 1;
+          switch (player) {
+            case 1:
+              document.getElementById("box6").innerHTML = "O";
+              player = player + 1;
+              checkwhowon();
+              break;
+            case 2:
+              document.getElementById("box6").innerHTML = "X";
+              player = player - 1;
+              checkwhowon();
+              break;
+          }
+        } else {
+          alert("Choose another box!");
+        }
+      }
+      function box7check() {
+        if (clickseven == 0) {
+          clickseven = 1;
+          switch (player) {
+            case 1:
+              document.getElementById("box7").innerHTML = "O";
+              player = player + 1;
+              checkwhowon();
+              break;
+            case 2:
+              document.getElementById("box7").innerHTML = "X";
+              player = player - 1;
+              checkwhowon();
+              break;
+          }
+        } else {
+          alert("Choose another box!");
+        }
+      }
+      function box8check() {
+        if (clickeight == 0) {
+          clickeight = 1;
+          switch (player) {
+            case 1:
+              document.getElementById("box8").innerHTML = "O";
+              player = player + 1;
+              checkwhowon();
+              break;
+            case 2:
+              document.getElementById("box8").innerHTML = "X";
+              player = player - 1;
+              checkwhowon();
+              break;
+          }
+        } else {
+          alert("Choose another box!");
+        }
+      }
+      function box9check() {
+        if (clicknine == 0) {
+          clicknine = 1;
+          switch (player) {
+            case 1:
+              document.getElementById("box9").innerHTML = "O";
+              player = player + 1;
+              checkwhowon();
+              break;
+            case 2:
+              document.getElementById("box9").innerHTML = "X";
+              player = player - 1;
+              checkwhowon();
+              break;
+          }
+        } else {
+          alert("Choose another box!");
+        }
+      }
+    </script>
+  </body>
+</html>
